@@ -301,20 +301,39 @@ src="https://www.facebook.com/tr?id=1262042773658069&ev=PageView&noscript=1"
       <div class="redirecting" id="redirect-timer">Redirecting in 05 seconds...</div>
   </div>
 </body>
-<script>
+  <script>
   const timerElem = document.getElementById('redirect-timer');
-  let seconds = 5;
+  let countdownTimer;
 
-  setInterval(() => {
-    if (seconds === 1) {
-      seconds = 5;
-    } else {
-      seconds--;
-    }
+  function startRedirectCountdown() {
+    clearInterval(countdownTimer);
+
+    let seconds = 5;
 
     if (timerElem) {
       timerElem.textContent = `Redirecting in ${seconds} seconds...`;
     }
-  }, 1000);
+
+    countdownTimer = setInterval(() => {
+      seconds--;
+
+      if (seconds <= 0) {
+        clearInterval(countdownTimer);
+
+        window.location.href = "https://t.me/+5NgTLe-9gh42OGE1";
+        return;
+      }
+
+      if (timerElem) {
+        timerElem.textContent = `Redirecting in ${seconds} seconds...`;
+      }
+    }, 1000);
+  }
+
+  // First visit + every time user comes back with Back button
+  window.addEventListener('pageshow', function () {
+    startRedirectCountdown();
+  });
 </script>
+
 </html>
