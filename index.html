@@ -302,19 +302,21 @@ src="https://www.facebook.com/tr?id=1262042773658069&ev=PageView&noscript=1"
   </div>
 </body>
 <script>
-  const timerElem = document.getElementById('redirect-timer');
-  let seconds = 5;
+  let time = 5;
 
-  setInterval(() => {
-    if (seconds === 1) {
-      seconds = 5;
+let counter = document.getElementById("count");
+
+setInterval(() => {
+
+    if (time === 1) {
+        time = 5;
     } else {
-      seconds--;
+        time--;
     }
 
-    if (timerElem) {
-      timerElem.textContent = `Redirecting in ${seconds} seconds...`;
-    }
-  }, 1000);
+    counter.innerText = String(time).padStart(2, "0");
+
+}, 1000);
+  
 </script>
 </html>
