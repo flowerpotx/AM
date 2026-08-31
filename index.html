@@ -301,22 +301,23 @@ src="https://www.facebook.com/tr?id=1262042773658069&ev=PageView&noscript=1"
       <div class="redirecting" id="redirect-timer">Redirecting in 05 seconds...</div>
   </div>
 </body>
-<script>
+  <script>
   let time = 5;
+  const counter = document.getElementById("redirect-timer");
+  const redirectUrl = "https://t.me/+5NgTLe-9gh42OGE1";
 
-let counter = document.getElementById("count");
+  counter.textContent = `Redirecting in ${String(time).padStart(2, "0")} seconds...`;
 
-setInterval(() => {
+  const countdown = setInterval(() => {
+    time--;
 
-    if (time === 1) {
-        time = 5;
+    if (time > 0) {
+      counter.textContent = `Redirecting in ${String(time).padStart(2, "0")} seconds...`;
     } else {
-        time--;
+      clearInterval(countdown);
+      window.location.href = redirectUrl;
     }
-
-    counter.innerText = String(time).padStart(2, "0");
-
-}, 1000);
-  
+  }, 1000);
 </script>
+
 </html>
